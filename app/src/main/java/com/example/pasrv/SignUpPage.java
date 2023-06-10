@@ -96,6 +96,8 @@ public class SignUpPage extends AppCompatActivity {
                                 @Override
                                 public void onError(ANError anError) {
 
+                                    LoadingBar.setVisibility(view.GONE);
+                                    tvLogin.setVisibility(View.VISIBLE);
                                 }
                             });
 

@@ -84,12 +84,15 @@ public class LoginPage extends AppCompatActivity {
 
                                 pbLoadBar.setVisibility(view.GONE);
                                 btnLogin.setVisibility(View.VISIBLE);
+
                             }
 
                             @Override
                             public void onError(ANError anError) {
                                 Toast.makeText(LoginPage.this, "Failed Login", Toast.LENGTH_SHORT).show();
 
+                                pbLoadBar.setVisibility(view.GONE);
+                                btnLogin.setVisibility(View.VISIBLE);
                             }
                         });
 
