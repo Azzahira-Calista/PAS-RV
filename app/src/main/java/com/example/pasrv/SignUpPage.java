@@ -46,8 +46,8 @@ public class SignUpPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_page);
 
-//        LoadingBar = findViewById(R.id.LoadingBar);
-//        LoadingBar.setVisibility(View.GONE);
+        LoadingBar = findViewById(R.id.LoadingBar);
+        LoadingBar.setVisibility(View.GONE);
 
         tvLogin = findViewById(R.id.tvLogin);
         etEmail = findViewById(R.id.etEmail);
@@ -65,8 +65,8 @@ public class SignUpPage extends AppCompatActivity {
                 String username = etUsername2.getText().toString();
                 String password = etPassword2.getText().toString();
                 String fullName = full_name.getText().toString();
-//                LoadingBar.setVisibility(View.VISIBLE);
-                btnSignUp.setEnabled(false);
+                LoadingBar.setVisibility(View.VISIBLE);
+                btnSignUp.setVisibility(View.GONE);
 
                 //Sebenernya ini cuma ngecek apakah teksnya udah keisi semua apa belom jadi mau pake gpp gak juga gpp
                 if (!TextUtils.isEmpty(fullName) && !TextUtils.isEmpty(username) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)){
@@ -84,6 +84,10 @@ public class SignUpPage extends AppCompatActivity {
                                 @Override
                                 public void onResponse(JSONObject response) {
                                     Log.d("TAG", "onResponse: " + response);
+
+                                    LoadingBar.setVisibility(view.GONE);
+                                    tvLogin.setVisibility(View.VISIBLE);
+
                                     //Ngeintent ke Login
                                     Intent intent = new Intent(SignUpPage.this, MainActivity.class);
                                     startActivity(intent);

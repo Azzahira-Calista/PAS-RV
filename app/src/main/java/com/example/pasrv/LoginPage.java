@@ -40,8 +40,8 @@ public class LoginPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
 
-//        pbLoadBar = findViewById(R.id.pbLoadingBar);
-//        pbLoadBar.setVisibility(View.GONE);
+        pbLoadBar = findViewById(R.id.pbLoadingBar);
+        pbLoadBar.setVisibility(View.GONE);
 
         tvSignUp = findViewById(R.id.tvSignUp);
         etUsername = findViewById(R.id.etUsername);
@@ -52,8 +52,8 @@ public class LoginPage extends AppCompatActivity {
             public void onClick(View view) {
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
-//                pbLoadBar.setVisibility(View.VISIBLE);
-                btnLogin.setEnabled(false);
+                pbLoadBar.setVisibility(View.VISIBLE);
+                btnLogin.setVisibility(View.GONE);
 
                 //api bwt login
                 AndroidNetworking.post("https://mediadwi.com/api/latihan/login")
@@ -82,16 +82,14 @@ public class LoginPage extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
 
-//                                pbLoadBar.setVisibility(view.GONE);
-                                btnLogin.setEnabled(true);
+                                pbLoadBar.setVisibility(view.GONE);
+                                btnLogin.setVisibility(View.VISIBLE);
                             }
 
                             @Override
                             public void onError(ANError anError) {
                                 Toast.makeText(LoginPage.this, "Failed Login", Toast.LENGTH_SHORT).show();
 
-//                                pbLoadBar.setVisibility(view.GONE);
-                                btnLogin.setEnabled(true);
                             }
                         });
 
